@@ -80,7 +80,7 @@ if python -c "import evdev" 2>/dev/null; then
     skip "evdev already installed"
 else
     info "installing evdev"
-    conda install -c conda-forge python-evdev -y > /dev/null
+    conda install conda-forge::evdev -y
 fi
 
 # openvla-oft 설치
