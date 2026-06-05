@@ -34,8 +34,7 @@ header() {
     echo ""
     line
     printf "\e[1;32m%*s%s\e[0m\n" $pad "" "$text"
-    line
-}
+    line }
 
 info() { printf "\e[36m  > %s\e[0m\n" "$1"; }
 skip() { printf "\e[33m  > %s (skip)\e[0m\n" "$1"; }
