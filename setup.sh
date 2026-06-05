@@ -1,24 +1,22 @@
 #!/bin/bash
 
-: << 'DOC'
-Hyeonjeong Jeong
-June 05, 2026
+# Hyeonjeong Jeong
+# June 05, 2026
 
-[setup.sh]
-  새 GPU 서버에서 한번에 OpenVLA-OFT 및 LIBERO 설치
+# [setup.sh]
+#   새 GPU 서버에서 한번에 OpenVLA-OFT 및 LIBERO 설치
 
-[사용 방법]
-  step 1. (로컬 환경) ssh ubuntu@<새 인스턴스 IP>
-  step 2. (서버 환경) wget https://raw.githubusercontent.com/jeongxhj/openvla-oft-study/main/setup.sh && bash setup.sh
+# [사용 방법]
+#   step 1. (로컬 환경) ssh ubuntu@<새 인스턴스 IP>
+#   step 2. (서버 환경) wget https://raw.githubusercontent.com/jeongxhj/openvla-oft-study/main/setup.sh && bash setup.sh
 
-[설치 완료 후 빠른 평가 실행]
-  $ source ~/.bashrc
-  $ conda activate openvla-oft
-  $ cd ~/openvla-oft
-  $ python experiments/robot/libero/run_libero_eval.py \
-    --pretrained_checkpoint moojink/openvla-7b-oft-finetuned-libero-spatial \
-    --task_suite_name libero_spatial --num_trials_per_task 3
-DOC
+# [설치 완료 후 빠른 평가 실행]
+#   $ source ~/.bashrc
+#   $ conda activate openvla-oft
+#   $ cd ~/openvla-oft
+#   $ python experiments/robot/libero/run_libero_eval.py \
+#     --pretrained_checkpoint moojink/openvla-7b-oft-finetuned-libero-spatial \
+#     --task_suite_name libero_spatial --num_trials_per_task 3
 
 set -e
 
@@ -34,7 +32,8 @@ header() {
     echo ""
     line
     printf "\e[1;32m%*s%s\e[0m\n" $pad "" "$text"
-    line }
+    line
+}
 
 info() { printf "\e[36m  > %s\e[0m\n" "$1"; }
 skip() { printf "\e[33m  > %s (skip)\e[0m\n" "$1"; }
@@ -87,7 +86,8 @@ done_msg
 # ============================================================
 header "Step 3/6: Install OpenVLA-OFT"
 
-info "version constraints: torch 2.2.0 / numpy 1.26.4 / opencv 4.9.0.80"
+info "using pinned package versions to avoid dependency conflicts..."
+info "pinned versions: torch 2.2.0, numpy 1.26.4, opencv-python 4.9.0.80"
 
 cd "$HOME"
 if [ -d "openvla-oft" ]; then
@@ -101,7 +101,7 @@ cd openvla-oft
 if python -c "import evdev" 2>/dev/null; then
     skip "evdev already installed"
 else
-    info "installing evdev..."
+    info "installing required dependency: evdev"
     conda install conda-forge::evdev -y
 fi
 
