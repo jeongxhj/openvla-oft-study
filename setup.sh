@@ -50,6 +50,7 @@ opencv-python==4.9.0.80
 protobuf==3.20.3
 tensorflow-metadata==1.13.1
 wandb==0.15.12
+setuptools<81
 EOF
 
 # ============================================================
