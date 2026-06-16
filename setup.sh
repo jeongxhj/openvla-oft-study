@@ -47,6 +47,8 @@ torchvision==0.17.0
 torchaudio==2.2.0
 numpy==1.26.4
 opencv-python==4.9.0.80
+protobuf==3.20.3
+tensorflow-metadata==1.13.1
 EOF
 
 # ============================================================
